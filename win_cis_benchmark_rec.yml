@@ -1,4 +1,0 @@
----
-- hosts: all
-  roles:
-    - role: win_wazuh_agent_install
