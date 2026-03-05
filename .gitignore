@@ -1,0 +1,4 @@
+# ignore dir
+.vscode/
+# ignore file
+.DS_Store
