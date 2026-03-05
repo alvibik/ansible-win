@@ -1,10 +1,16 @@
 ---
-# tasks to import cert
+# Enforce password history
   - name: Enforce password history
     community.windows.win_security_policy:
       section: System Access
       key: PasswordHistorySize
       value: 24
+# Set the maximum password age
+  - name: Set the maximum password age
+    community.windows.win_security_policy:
+      section: System Access
+      key: MaximumPasswordAge
+      value: 90
 #    become: true
 #    become_method: runas
 #    become_user: yks21adm 
