@@ -1,0 +1,9 @@
+---
+# tasks file for win_glpi_agent
+  - name: Enforce password history
+    community.windows.win_security_policy::
+      path: C:\temp\
+      state: directory
+      section: System Access
+      key: PasswordHistorySize
+      value: 24

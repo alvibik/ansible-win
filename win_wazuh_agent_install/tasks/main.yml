@@ -1,0 +1,18 @@
+---
+# tasks file for win_wazuh_agent_install
+  - name: Run PowerShell script to install wazuh agent
+    become: yes
+    become_user: yks21adm
+    ansible.windows.win_powershell:
+      script: |
+        Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.12.0-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='wazuh-back.yks.21-school.ru' 
+
+  - name: Copy cfg file
+    ansible.windows.win_copy:
+      src: files/ossec.conf
+      dest: 'C:\Program Files (x86)\ossec-agent\'
+  
+  - name: Restart a wazuh service
+    ansible.windows.win_service:
+      name: WazuhSvc
+      state: restarted

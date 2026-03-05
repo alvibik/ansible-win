@@ -1,0 +1,4 @@
+---
+- hosts: all
+  roles:
+    - role: win_glpi_agent

@@ -1,0 +1,4 @@
+---
+- hosts: all
+  roles:
+    - role: win_cert_install

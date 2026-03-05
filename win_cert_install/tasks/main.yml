@@ -1,0 +1,23 @@
+---
+# tasks to import cert
+  - name: Create temp directory
+    ansible.windows.win_file:
+      path: C:\Temp\
+      state: directory
+
+  - name: Copy folder to C:\Temp (results in C:\Temp\temp_files)
+    ansible.windows.win_copy:
+      src: files/802_1x.crt
+      dest: C:\Temp\802_1x.crt
+
+  - name: Import certificate 802.1x
+    ansible.windows.win_certificate_store:
+      path: C:\Temp\802_1x.crt
+#      file_type: pkcs12
+      store_location: LocalMachine
+      store_name: Root
+      key_storage: machine
+      state: present
+    become: true
+    become_method: runas
+    become_user: yks21adm 

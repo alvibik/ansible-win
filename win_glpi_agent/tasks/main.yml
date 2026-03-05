@@ -1,0 +1,19 @@
+---
+# tasks file for win_glpi_agent
+  - name: Create temp directory
+    ansible.windows.win_file:
+      path: C:\temp\
+      state: directory
+
+  - name: Download the GLPI
+    ansible.windows.win_get_url:
+      url: https://raw.github.com/glpi-project/glpi-agent/develop/contrib/windows/glpi-agent-deployment.vbs
+      dest: C:\temp\glpi-agent-deployment.vbs
+
+  - name: Copy folder to C:\Temp (results in C:\Temp\temp_files)
+    ansible.windows.win_copy:
+      src: files/glpi-agent-deployment.vbs
+      dest: C:\temp\glpi-agent-deployment.vbs
+
+  - name: execute script
+    ansible.windows.win_command: cscript.exe C:\temp\glpi-agent-deployment.vbs
