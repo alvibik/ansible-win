@@ -1,9 +1,10 @@
 ---
-# tasks file for win_glpi_agent
+# tasks to import cert
   - name: Enforce password history
-    community.windows.win_security_policy::
-      path: C:\temp\
-      state: directory
+    community.windows.win_security_policy:
       section: System Access
       key: PasswordHistorySize
       value: 24
+#    become: true
+#    become_method: runas
+#    become_user: yks21adm 
