@@ -16,7 +16,11 @@
       section: System Access
       key: MinimumPasswordAge
       value: 3
-
+  - name: Minimum password length
+    community.windows.win_security_policy:
+      section: System Access
+      key: MinimumPasswordLength
+      value: 14
 
 #    become: true
 #    become_method: runas
