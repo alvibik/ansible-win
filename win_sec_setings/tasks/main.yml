@@ -21,7 +21,11 @@
       section: System Access
       key: MinimumPasswordLength
       value: 14
-
+  - name: Ensure Relax minimum password length limits is set to Enabled
+    community.windows.win_security_policy:
+      section: System Access
+      key: PasswordComplexity
+      value: 1
 #    become: true
 #    become_method: runas
 #    become_user: yks21adm 
