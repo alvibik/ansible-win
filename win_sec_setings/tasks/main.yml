@@ -26,6 +26,13 @@
       section: System Access
       key: PasswordComplexity
       value: 1
+  - name: Enable "Relax minimum password length limits"
+    ansible.windows.win_regedit:
+      path: HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\SAM
+      name: RelaxMinimumPasswordLengthLimits
+      data: 1
+      type: dword
+      state: present
 #    become: true
 #    become_method: runas
 #    become_user: yks21adm 
